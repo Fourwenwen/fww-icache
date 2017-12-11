@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 /**
- * @Description:
+ * @Description: 检查缓存是否过期的调度actor
  * @author: Wen
  * @Date: create in 2017/11/28 14:49
  */

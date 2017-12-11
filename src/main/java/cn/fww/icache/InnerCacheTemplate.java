@@ -6,6 +6,7 @@ import akka.actor.Inbox;
 import akka.actor.Props;
 import cn.fww.icache.actor.eume.ActorCommand;
 import cn.fww.icache.actor.schedule.CacheExpiredActor;
+import cn.fww.icache.common.Constant;
 import cn.fww.icache.spring.SpringExt;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -46,6 +47,10 @@ public class InnerCacheTemplate implements InitializingBean {
      * 默认版本号(必须为数字)
      */
     private String defaultVersion = "1";
+
+    private final String CACHE_EXPIRED_ACTOR = "cacheExpiredActor";
+
+    private final String CHECK_CACHE_VERSION_ACTOR = "checkCacheVersionActor";
 
     @Autowired
     private SpringExt springExt;
@@ -159,8 +164,8 @@ public class InnerCacheTemplate implements InitializingBean {
      */
     private void startUpSchedule() {
         // 启动调度任务
-        final ActorRef cacheExpiredActor = actorSystem.actorOf(Props.create(CacheExpiredActor.class), "cacheExpiredActor");
-        final ActorRef checkCacheVersionActor = actorSystem.actorOf(springExt.props("CheckCacheVersionActor"), "checkCacheVersionActor");
+        final ActorRef cacheExpiredActor = actorSystem.actorOf(Props.create(CacheExpiredActor.class), CACHE_EXPIRED_ACTOR);
+        final ActorRef checkCacheVersionActor = actorSystem.actorOf(springExt.props(Constant.CHECK_CACHE_VERSION_ACTOR), CHECK_CACHE_VERSION_ACTOR);
         final Inbox inbox = Inbox.create(actorSystem);
         inbox.watch(cacheExpiredActor);
         inbox.watch(checkCacheVersionActor);

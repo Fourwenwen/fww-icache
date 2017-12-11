@@ -3,7 +3,7 @@ package cn.fww.icache.annotation;
 import java.lang.annotation.*;
 
 /**
- * @Description:
+ * @Description: 更新缓存注解
  * @author: Wen
  * @Date: create in 2017/12/6 12:02
  */

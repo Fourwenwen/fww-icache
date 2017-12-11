@@ -5,6 +5,7 @@ import akka.actor.UntypedActor;
 import cn.fww.icache.InnerCache;
 import cn.fww.icache.InnerCacheTemplate;
 import cn.fww.icache.actor.eume.ActorCommand;
+import cn.fww.icache.common.Constant;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +17,11 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @Description:
+ * @Description: 检查缓存的版本是否更改
  * @author: Wen
  * @Date: create in 2017/11/28 17:36
  */
-@Named("CheckCacheVersionActor")
+@Named(Constant.CHECK_CACHE_VERSION_ACTOR)
 @Scope("prototype")
 public class CheckCacheVersionActor extends UntypedActor {
 
