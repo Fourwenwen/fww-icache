@@ -1,16 +1,29 @@
+description 'fww icache'
+
 group 'cn.fourwenwen'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.springframework', name: 'spring-aop', version: '4.3.13.RELEASE'
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    compile group: 'com.typesafe.akka', name: 'akka-actor_2.10', version: '2.3.6'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'org.aspectj', name: 'aspectjrt', version: '1.8.13'
+
+    compile group: 'org.springframework', name: 'spring-content', version: '4.3.13.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core', version: '4.3.13.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-redis', version: '1.8.9.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
