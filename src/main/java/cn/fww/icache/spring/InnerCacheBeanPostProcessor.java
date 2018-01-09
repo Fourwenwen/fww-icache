@@ -2,6 +2,7 @@ package cn.fww.icache.spring;
 
 import cn.fww.icache.annotation.InnerCacheable;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
@@ -20,6 +21,11 @@ public class InnerCacheBeanPostProcessor implements BeanPostProcessor {
 
     private Map<Method, Object> annotationBean = new HashMap<>();
 
+    private Map<Method, String> annotationBeanName = new HashMap<>();
+
+    @Autowired
+    private SpringExt springExt;
+
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         return bean;
@@ -34,6 +40,7 @@ public class InnerCacheBeanPostProcessor implements BeanPostProcessor {
                 if (innerCacheable != null) {
                     System.err.println("找到注入InnerCache的方法了" + method.getName() + bean.getClass().getName());
                     annotationBean.put(method, bean);
+                    annotationBeanName.put(method, beanName);
                 }
             }
         }
@@ -42,5 +49,9 @@ public class InnerCacheBeanPostProcessor implements BeanPostProcessor {
 
     public Map<Method, Object> getAnnotationBean() {
         return annotationBean;
+    }
+
+    public Map<Method, String> getAnnotationBeanName() {
+        return annotationBeanName;
     }
 }

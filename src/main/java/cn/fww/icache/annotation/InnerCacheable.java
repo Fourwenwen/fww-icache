@@ -1,9 +1,11 @@
 package cn.fww.icache.annotation;
 
+import org.springframework.cache.annotation.Cacheable;
+
 import java.lang.annotation.*;
 
 /**
- * @Description: 读取缓存注解
+ * @Description:
  * @author: Wen
  * @Date: create in 2017/11/29 16:44
  */
@@ -24,6 +26,8 @@ public @interface InnerCacheable {
     boolean isVersion() default false;
 
     String actorBean() default "";
+
+    Cacheable CACHEABLE() default @Cacheable();
 
 
 }

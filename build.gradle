@@ -22,6 +22,10 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     compile group: 'org.aspectj', name: 'aspectjrt', version: '1.8.13'
 
+    /*compile group: 'cglib', name: 'cglib', version: '3.2.5'*/
+    compile group: 'org.javassist', name: 'javassist', version: '3.22.0-GA'
+
+
     compile group: 'org.springframework', name: 'spring-content', version: '4.3.13.RELEASE'
     compile group: 'org.springframework', name: 'spring-core', version: '4.3.13.RELEASE'
     compile group: 'org.springframework.data', name: 'spring-data-redis', version: '1.8.9.RELEASE'
